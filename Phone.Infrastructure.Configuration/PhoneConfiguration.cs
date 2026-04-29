@@ -3,14 +3,13 @@ using Microsoft.Extensions.Configuration;
 using Phone.Infrastructure.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Phone.Infrastructure.Configuration;
 
 public partial class PhoneConfiguration
 {
     public static void Configure(IServiceCollection services, IConfiguration configuration)
     {
-        var dbConnectionString = configuration.GetConnectionString("PhoneDB");
+        var dbConnectionString = configuration.GetConnectionString("Phone");
 
         ConfigureDatabase(services, dbConnectionString!);
         ConfigureRepositoreis(services);
@@ -32,7 +31,7 @@ public partial class PhoneConfiguration
         services.AddDbContext<PhoneContext>(option =>
         {
             option.UseSqlServer(connectionString,
-                b => b.MigrationsAssembly("Phone.Infrastructure.EFCore"));
+                b => b.MigrationsAssembly("Phone.Infrastructure.EfCore"));
         }, ServiceLifetime.Scoped);
     }
 }
@@ -52,7 +51,6 @@ public partial class PhoneConfiguration
         }
         catch (Exception ex)
         {
-
             throw;
         }
     }
