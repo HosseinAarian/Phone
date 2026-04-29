@@ -1,3 +1,18 @@
 <Solution>
-  <Project Path="Phone.Presentation.csproj" />
+  <Folder Name="/Application/">
+    <Project Path="../Phone.Application.Contract/Phone.Application.Contract.csproj" Id="8c830ab2-2dc6-41ff-bd6d-bacf3ea6f518" />
+    <Project Path="../Phone.Application/Phone.Application.csproj" Id="2ed99a10-a13a-4e16-968c-91a2efce414c" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="../Phone.Domain.Contract/Phone.Domain.Contract.csproj" Id="ddff36ca-8eee-4085-8203-a30db2ac0309" />
+    <Project Path="../Phone.Domain/Phone.Domain.csproj" Id="460dcb58-f06e-4112-b3c1-418e62979b72" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="../Phone.Infrastructure.Configuration/Phone.Infrastructure.Configuration.csproj" Id="765bd7b4-6a8e-400f-8909-6abff8811657" />
+    <Project Path="../Phone.Infrastructure.EfCore/Phone.Infrastructure.EfCore.csproj" Id="e2088f0d-5022-40bb-a0cc-7da41240d160" />
+    <Project Path="../Phone.Infrastructure.ExternalServices/Phone.Infrastructure.ExternalServices.csproj" Id="c9f67d36-2bce-448e-8397-8a87b2b082ff" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="Phone.Presentation.csproj" />
+  </Folder>
 </Solution>
