@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Phone.Application.Contract\Phone.Application.Contract.csproj" />
+    <ProjectReference Include="..\Phone.Infrastructure.Configuration\Phone.Infrastructure.Configuration.csproj" />
   </ItemGroup>
 
 </Project>

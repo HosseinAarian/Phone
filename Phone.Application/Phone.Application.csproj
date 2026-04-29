@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\Brands\" />
     <Folder Include="Handlers\Phones\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Phone.Application.Contract\Phone.Application.Contract.csproj" />
+    <ProjectReference Include="..\Phone.Infrastructure.EfCore\Phone.Infrastructure.EfCore.csproj" />
   </ItemGroup>
 
 </Project>

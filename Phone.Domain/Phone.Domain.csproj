@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Brands\" />
     <Folder Include="Entities\Phones\" />
   </ItemGroup>
 
