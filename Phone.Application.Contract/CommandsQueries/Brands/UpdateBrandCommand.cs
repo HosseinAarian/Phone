@@ -2,7 +2,7 @@
 
 namespace Phone.Application.Contract.CommandsQueries.Brands;
 
-public class UpdateBrandCommand : IRequest<UpdateBrandCommandResponse>
+public record UpdateBrandCommand : IRequest<UpdateBrandCommandResponse>
 {
     public short Id { get; set; }
     public required string Title { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Phone.Application.Contract.CommandsQueries.Brands;
 
-public class CreateBrandCommandResponse
+public record CreateBrandCommandResponse
 {
     public short BrandId { get; set; }
 }

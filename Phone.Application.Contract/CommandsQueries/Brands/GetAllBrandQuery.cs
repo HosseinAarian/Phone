@@ -2,6 +2,6 @@
 
 namespace Phone.Application.Contract.CommandsQueries.Brands;
 
-public class GetAllBrandQuery : IRequest<GetAllBrandQueryResponse>
+public record GetAllBrandQuery : IRequest<GetAllBrandQueryResponse>
 {
 }

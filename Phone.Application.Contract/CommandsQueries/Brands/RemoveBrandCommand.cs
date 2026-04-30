@@ -2,7 +2,7 @@
 
 namespace Phone.Application.Contract.CommandsQueries.Brands;
 
-public class RemoveBrandCommand : IRequest<RemoveBrandCommandResponse>
+public record RemoveBrandCommand : IRequest<RemoveBrandCommandResponse>
 {
 	public short Id { get; set; }
 }

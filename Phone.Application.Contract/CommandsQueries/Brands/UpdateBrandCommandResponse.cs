@@ -1,6 +1,6 @@
 ﻿namespace Phone.Application.Contract.CommandsQueries.Brands;
 
-public class UpdateBrandCommandResponse
+public record UpdateBrandCommandResponse
 {
-	public short Id { get; set; }
+    public short Id { get; set; }
 }
