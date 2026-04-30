@@ -34,11 +34,24 @@ public class BrandRepository(
                             Description = x.Description,
                         }).FirstOrDefaultAsync(cancellationToken);
 
-
     public async Task<short> AddAsync(Brand brand, CancellationToken cancellationToken)
     {
         await context.Brands.AddAsync(brand, cancellationToken);
         await SaveChangesAsync(cancellationToken);
         return brand.Id;
+    }
+
+    public async Task DeleteAsync(short id, CancellationToken cancellationToken)
+    {
+        var result = await context.Brands.FindAsync(id, cancellationToken);
+        context.Brands.Remove(result!);
+    }
+
+    public async Task<short> UpdateAsync(Brand brand, CancellationToken cancellationToken)
+    {
+        var brandToUpdate = await context.Brands.FindAsync(brand.Id, cancellationToken);
+        brandToUpdate?.Title = brand.Title;
+        brandToUpdate?.Description = brand.Description;
+        return brandToUpdate.Id;
     }
 }

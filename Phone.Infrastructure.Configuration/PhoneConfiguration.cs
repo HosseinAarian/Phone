@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Phone.Infrastructure.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
+using Phone.Domain.Contract.IRepositories;
+using Phone.Infrastructure.EfCore.Repositories;
 
 namespace Phone.Infrastructure.Configuration;
 
@@ -23,7 +25,7 @@ public partial class PhoneConfiguration
 
     private static void ConfigureRepositoreis(IServiceCollection services)
     {
-
+        services.AddScoped<IBrandRepository, BrandRepository>();
     }
 
     private static void ConfigureDatabase(IServiceCollection services, string connectionString)

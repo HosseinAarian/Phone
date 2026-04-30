@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Phone.Application.Contract.CommandsQueries.Brands;
+using Phone.Domain.Contract.IRepositories;
 using Phone.Domain.Entities.Brands;
-using Phone.Infrastructure.EfCore.Repositories;
 
 namespace Phone.Application.Handlers.Brands;
 
 public class CreateBrandCommandHandler(
-    BrandRepository brandRepository)
+    IBrandRepository brandRepository)
     : IRequestHandler<CreateBrandCommand, CreateBrandCommandResponse>
 {
     public async Task<CreateBrandCommandResponse> Handle(CreateBrandCommand request, CancellationToken cancellationToken)
@@ -18,7 +18,7 @@ public class CreateBrandCommandHandler(
         };
 
         await brandRepository.AddAsync(brand, cancellationToken);
-        await brandRepository.SaveChangesAsync();
+        await brandRepository.SaveChangesAsync(cancellationToken);
 
         var response = new CreateBrandCommandResponse
         {
