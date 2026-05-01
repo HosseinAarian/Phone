@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Phone.Application.Contract.CommandsQueries.Brands;
-using System.Threading;
 
 namespace Phone.Presentation.Controllers;
 

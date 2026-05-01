@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Phone.Application.Contract.CommandsQueries.Brands;
 using Phone.Domain.Contract.IRepositories;
 
@@ -6,7 +7,8 @@ using Phone.Domain.Contract.IRepositories;
 namespace Phone.Application.Handlers.Brands;
 
 public class GetBrandQueryHandler(
-    IBrandRepository brandRepository)
+    IBrandRepository brandRepository,
+    IMapper mapper)
     : IRequestHandler<GetBrandQuery, GetBrandQueryResponse>
 {
     public async Task<GetBrandQueryResponse> Handle(GetBrandQuery request, CancellationToken cancellationToken)
@@ -15,12 +17,7 @@ public class GetBrandQueryHandler(
         if (result is null)
             throw new Exception("Brand not found");
 
-        var response = new GetBrandQueryResponse
-        {
-            Id = result.Id,
-            Title = result.Title,
-            Description = result.Description
-        };
+        var response = mapper.Map<GetBrandQueryResponse>(result);
         return response;
     }
 }

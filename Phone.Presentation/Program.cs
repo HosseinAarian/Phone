@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.OpenApi;
 using Phone.Application.Contract.CommandsQueries.Brands;
 using Phone.Application.Handlers.Brands;
@@ -19,6 +20,19 @@ builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(CreateBrandCommandHandler).Assembly);
 });
+
+builder.Services.AddSingleton(provider =>
+{
+    var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
+
+    var config = new MapperConfiguration(cfg =>
+    {
+        cfg.AddMaps(AppDomain.CurrentDomain.GetAssemblies());
+    }, loggerFactory);
+
+    return config.CreateMapper();
+});
+
 
 PhoneConfiguration.Configure(builder.Services, builder.Configuration);
 
