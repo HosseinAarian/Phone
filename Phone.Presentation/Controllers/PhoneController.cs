@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Phone.Application.Contract.CommandsQueries.Brands;
 using Phone.Application.Contract.CommandsQueries.Phones;
 
 namespace Phone.Presentation.Controllers;
@@ -30,6 +28,13 @@ public class PhoneController(
     {
         var result = await mediator.Send(input, cancellationToken);
         return Ok(result);
+    }
+
+    [HttpPut("Update")]
+    public async Task<IActionResult> Update(UpdatePhoneCommand input, CancellationToken cancellationToken)
+    {
+        var id = await mediator.Send(input, cancellationToken);
+        return Ok(id);
     }
 
     [HttpDelete("Delete")]

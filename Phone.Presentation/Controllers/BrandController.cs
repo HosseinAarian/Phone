@@ -10,7 +10,7 @@ public class BrandController(
     IMediator mediator)
     : ControllerBase
 {
-    [HttpGet("Brand/Get/{id}")]
+    [HttpGet("Get/{id}")]
     public async Task<IActionResult> Get(short id, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(new GetBrandQuery() { Id = id }, cancellationToken);
