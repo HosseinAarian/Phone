@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Phone.Infrastructure.EfCore.Context;
 
@@ -10,9 +11,11 @@ using Phone.Infrastructure.EfCore.Context;
 namespace Phone.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(PhoneContext))]
-    partial class PhoneContextModelSnapshot : ModelSnapshot
+    [Migration("20260501085305_CreatePhone")]
+    partial class CreatePhone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

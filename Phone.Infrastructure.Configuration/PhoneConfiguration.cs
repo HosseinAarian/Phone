@@ -26,6 +26,7 @@ public partial class PhoneConfiguration
     private static void ConfigureRepositoreis(IServiceCollection services)
     {
         services.AddScoped<IBrandRepository, BrandRepository>();
+        services.AddScoped<IPhoneRepository, PhoneRepository>();
     }
 
     private static void ConfigureDatabase(IServiceCollection services, string connectionString)

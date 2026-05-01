@@ -1,6 +1,5 @@
 using AutoMapper;
 using Microsoft.OpenApi;
-using Phone.Application.Contract.CommandsQueries.Brands;
 using Phone.Application.Handlers.Brands;
 using Phone.Infrastructure.Configuration;
 

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandsQueries\Phones\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
 

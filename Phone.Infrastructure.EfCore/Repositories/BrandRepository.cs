@@ -13,6 +13,16 @@ public class BrandRepository(
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         => await context.SaveChangesAsync(cancellationToken);
 
+    public async Task<List<BrandDTO>> GetAllAsync(CancellationToken cancellationToken)
+        => await context.Brands.Select(x => new BrandDTO
+        {
+            Id = x.Id,
+            Title = x.Title,
+            Description = x.Description,
+        })
+        .AsNoTracking()
+        .ToListAsync(cancellationToken);
+
     public async ValueTask<BrandDTO?> GetAsync(short id, CancellationToken cancellationToken)
         => await context.Brands
                         .AsNoTracking()
@@ -23,16 +33,6 @@ public class BrandRepository(
                             Title = x.Title,
                             Description = x.Description,
                         }).FirstOrDefaultAsync(cancellationToken);
-
-    public async Task<List<BrandDTO>> GetAllAsync(CancellationToken cancellationToken)
-        => await context.Brands.Select(x => new BrandDTO
-        {
-            Id = x.Id,
-            Title = x.Title,
-            Description = x.Description,
-        })
-        .AsNoTracking()
-        .ToListAsync(cancellationToken);
 
     public async Task<short> AddAsync(Brand brand, CancellationToken cancellationToken)
     {
