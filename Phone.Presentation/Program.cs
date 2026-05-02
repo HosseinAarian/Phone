@@ -1,5 +1,7 @@
 using AutoMapper;
+using MediatR;
 using Microsoft.OpenApi;
+using Phone.Application.Contract.Common.CachingBehaviors;
 using Phone.Application.Handlers.Brands;
 using Phone.Infrastructure.Configuration;
 
@@ -31,6 +33,16 @@ builder.Services.AddSingleton(provider =>
 
     return config.CreateMapper();
 });
+
+builder.Services.AddMemoryCache();
+
+builder.Services.AddTransient(
+    typeof(IPipelineBehavior<,>),
+    typeof(ChachingBehavior<,>));
+
+builder.Services.AddTransient(
+    typeof(IPipelineBehavior<,>),
+    typeof(CacheInvalidationBehavior<,>));
 
 
 PhoneConfiguration.Configure(builder.Services, builder.Configuration);

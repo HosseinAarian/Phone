@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using Phone.Application.Contract.Common.Attributes;
 
 namespace Phone.Application.Contract.CommandsQueries.Phones;
 
+[InvalidateCache("phones:all")]
 public class UpdatePhoneCommand : IRequest<int>
 {
     public int Id { get; set; }

@@ -4,6 +4,8 @@ using Phone.Infrastructure.EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 using Phone.Domain.Contract.IRepositories;
 using Phone.Infrastructure.EfCore.Repositories;
+using Phone.Application.Contract.Interfaces;
+using Phone.Infrastructure.ExternalServices;
 
 namespace Phone.Infrastructure.Configuration;
 
@@ -20,7 +22,7 @@ public partial class PhoneConfiguration
 
     public static void ConfigureServices(IServiceCollection services)
     {
-
+        services.AddScoped<ICacheService, InMemoryCacheService>();
     }
 
     private static void ConfigureRepositoreis(IServiceCollection services)
