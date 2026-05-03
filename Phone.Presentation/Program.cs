@@ -4,6 +4,7 @@ using Microsoft.OpenApi;
 using Phone.Application.Contract.Common.CachingBehaviors;
 using Phone.Application.Handlers.Brands;
 using Phone.Infrastructure.Configuration;
+using Phone.Presentation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseGlobalExceptionHandling();
 
 app.UseHttpsRedirection();
 

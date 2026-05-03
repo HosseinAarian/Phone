@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Phone.Application.Contract.CommandsQueries.Phones;
+using Phone.Application.Contract.Exceptions;
 using Phone.Domain.Contract.IRepositories;
 using Phone.Domain.Entities.Phones;
 
@@ -11,6 +12,22 @@ public class CreatePhoneCommandHandler(
 {
     public Task<int> Handle(CreatePhoneCommand request, CancellationToken cancellationToken)
     {
+        if (string.IsNullOrWhiteSpace(request.Title))
+        {
+            throw new ValidationException(new Dictionary<string, string[]>
+            {
+                { "Title", new[] { "Title is required" } }
+            });
+        }
+
+        if (string.IsNullOrWhiteSpace(request.Description))
+        {
+            throw new ValidationException(new Dictionary<string, string[]>
+            {
+                { "Description", new[] { "Description is required" } }
+            });
+        }
+
         var phone = new Phone.Domain.Entities.Phones.Phone
         {
             Title = request.Title,
