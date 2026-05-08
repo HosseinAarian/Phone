@@ -15,4 +15,7 @@
   <Folder Name="/Presentation/">
     <Project Path="Phone.Presentation.csproj" />
   </Folder>
+  <Folder Name="/Utility/">
+    <Project Path="../Phone.Utility/Phone.Utility.csproj" Id="a18879bb-e5ea-49ac-93d9-d99a706039b9" />
+  </Folder>
 </Solution>

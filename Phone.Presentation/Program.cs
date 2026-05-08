@@ -4,9 +4,15 @@ using Microsoft.OpenApi;
 using Phone.Application.Contract.Common.CachingBehaviors;
 using Phone.Application.Handlers.Brands;
 using Phone.Infrastructure.Configuration;
+using Phone.Presentation;
 using Phone.Presentation.Extensions;
+using Phone.Utility.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//BBB
+builder.Services.AddOptions();
+builder.Services.Configure<Configs>(builder.Configuration.GetSection("Configs"));
 
 builder.Services.AddControllers();
 
@@ -45,6 +51,8 @@ builder.Services.AddTransient(
     typeof(IPipelineBehavior<,>),
     typeof(CacheInvalidationBehavior<,>));
 
+builder.Services.AddJWT();
+
 
 PhoneConfiguration.Configure(builder.Services, builder.Configuration);
 
@@ -61,6 +69,7 @@ app.UseGlobalExceptionHandling();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

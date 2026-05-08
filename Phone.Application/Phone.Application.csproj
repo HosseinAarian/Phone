@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Phone.Application.Contract\Phone.Application.Contract.csproj" />
     <ProjectReference Include="..\Phone.Infrastructure.EfCore\Phone.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\Phone.Utility\Phone.Utility.csproj" />
   </ItemGroup>
 
 </Project>

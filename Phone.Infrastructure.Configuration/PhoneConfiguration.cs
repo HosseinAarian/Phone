@@ -6,6 +6,7 @@ using Phone.Domain.Contract.IRepositories;
 using Phone.Infrastructure.EfCore.Repositories;
 using Phone.Application.Contract.Interfaces;
 using Phone.Infrastructure.ExternalServices;
+using Phone.Utility;
 
 namespace Phone.Infrastructure.Configuration;
 
@@ -23,12 +24,14 @@ public partial class PhoneConfiguration
     public static void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<ICacheService, InMemoryCacheService>();
+        services.AddSingleton<EncryptionUtility>();
     }
 
     private static void ConfigureRepositoreis(IServiceCollection services)
     {
         services.AddScoped<IBrandRepository, BrandRepository>();
         services.AddScoped<IPhoneRepository, PhoneRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
     }
 
     private static void ConfigureDatabase(IServiceCollection services, string connectionString)

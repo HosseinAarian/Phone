@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Phone.Application.Contract.CommandsQueries.Brands;
 using Phone.Application.Contract.Common.APIResults;
@@ -7,6 +8,7 @@ namespace Phone.Presentation.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class BrandController(
     IMediator mediator)
     : ControllerBase
